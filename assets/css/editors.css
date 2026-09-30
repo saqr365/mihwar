@@ -1,0 +1,30 @@
+/* editors.css — stacked sections (jumped to from the shared sticky sub-nav), soft cards that glow in each tool's brand colour. */
+.ide-pane+.ide-pane{margin-top:clamp(36px,6vh,56px)}
+.ide-h{margin:0 0 18px;font-size:1.3rem;font-weight:900}
+.ide-h small{display:block;margin-top:2px;color:var(--dim);font-size:.95rem;font-weight:400}
+.ide-grid{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
+.ide-card{--c:var(--gold);display:flex;align-items:center;direction:rtl;gap:16px;height:100%;padding:20px 22px;border-radius:var(--r);
+  background:var(--glass);border:1px solid var(--line);box-shadow:var(--shadow);
+  backdrop-filter:blur(18px) saturate(140%);-webkit-backdrop-filter:blur(18px) saturate(140%);
+  transition:transform .2s,border-color .2s,background .2s}
+.ide-card:hover{transform:translateY(-3px);background:var(--glass-hi);border-color:color-mix(in srgb,var(--c) 65%,transparent)}
+.ide-lg{width:54px;height:54px;flex:none;border-radius:16px;display:grid;place-items:center;color:#fff;overflow:hidden;
+  box-shadow:inset 0 0 0 1px rgba(128,128,128,.28),0 10px 24px -12px var(--c)}
+.ide-lg svg{width:62%;height:62%;flex:none}
+.ide-lg img{width:100%;height:100%;object-fit:cover;display:block}
+.ide-card .tx{flex:1;min-width:0;text-align:start}
+.ide-card .nm{display:block;font-size:1.15rem;font-weight:900;line-height:1.4}
+.ide-card .ds{display:block;margin-top:2px;color:var(--dim);font-size:.95rem;line-height:1.65}
+.ide-card .host{display:block;margin-top:8px;width:fit-content;font:500 .8rem 'IBM Plex Mono',monospace;color:var(--gold-soft);unicode-bidi:isolate}
+.ide-card .go{width:36px;height:36px;flex:none;display:grid;place-items:center;padding:0;gap:0;border-radius:50%;
+  border:1px solid var(--line);color:var(--dim);transition:.2s}
+.ide-card:hover .go{color:var(--btn-ink);background:var(--gold);border-color:var(--gold)}
+.ide-card .go .i{width:16px;height:16px}
+@media(max-width:760px){.ide-grid{grid-template-columns:1fr}.ide-card{padding:18px}}
+
+/* press feedback (same as .card/.tile in base.css) */
+.ide-card:active{transform:scale(.97)}
+
+/* ---- scroll reveal (progressive enhancement — js-reveal is added by editors.js, never under reduced motion) ---- */
+.js-reveal .ide-card:not(.in){opacity:0;transform:translateY(16px);transition:opacity .55s ease,transform .55s ease}
+.js-reveal .ide-card.in:not(.rdy){transition:opacity .55s ease,transform .55s ease,border-color .2s,background .2s}

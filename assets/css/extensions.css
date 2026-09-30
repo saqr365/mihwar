@@ -1,0 +1,55 @@
+/* extensions.css — extensions page: store tabs, browser chips, category filter, grouped cards */
+.xs-head{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:10px 14px;padding:8px;border:1px solid var(--line);border-radius:22px;background:var(--glass);box-shadow:var(--shadow)}
+.xs-lg svg{width:72%;height:72%;display:block}
+.xs-tabs{display:flex;gap:4px;padding:4px;border-radius:99px;background:color-mix(in srgb,var(--text) 5%,transparent)}
+.xs-tab{all:unset;box-sizing:border-box;cursor:pointer;display:flex;align-items:center;flex-direction:row-reverse;gap:9px;padding:7px 16px 7px 14px;border-radius:99px;position:relative;transition:background .25s,box-shadow .25s,color .25s;font-weight:800;font-size:.92rem;white-space:nowrap}
+.xs-tab:hover{background:color-mix(in srgb,var(--c) 14%,transparent)}
+.xs-tab:focus-visible,.xs-cat:focus-visible{outline:2px solid var(--gold-soft);outline-offset:2px}
+.xs-cat:focus-visible{outline-offset:3px}
+.xs-cat[hidden],.notice[hidden],.xs-note[hidden]{display:none}
+.xs-tab[aria-selected=true]{background:var(--c);color:#14110a;box-shadow:0 6px 18px -6px var(--c)}
+:root[data-theme="light"] .xs-tab[data-s=firefox][aria-selected=true],:root[data-theme="light"] .xs-tab[data-s=edge][aria-selected=true]{color:#fff} /* light theme: coral/teal are darker, so white text reads better */
+.xs-lg{display:grid;place-items:center;overflow:hidden;width:26px;height:26px;border-radius:50%;flex:none}
+.xs-br{display:flex;align-items:center;gap:8px;flex-wrap:wrap;padding-inline:10px}
+.xs-br span.l{font-size:.85rem;opacity:.7}
+.xs-bc{display:inline-flex;flex-direction:row-reverse;align-items:center;gap:7px;font-size:.85rem;font-weight:700;padding:4px 12px 4px 10px;border-radius:99px;border:1px solid var(--line);background:var(--glass);animation:xsin .4s both}
+.xs-bc i{width:11px;height:11px;border-radius:50%;background:var(--d)}
+.xs-cats{display:flex;gap:9px;flex-wrap:wrap;margin:22px 0 24px}
+.xs-cat{all:unset;box-sizing:border-box;cursor:pointer;display:inline-flex;align-items:center;gap:8px;padding:8px 16px;border-radius:99px;border:1px solid var(--line);background:var(--glass);font-weight:700;font-size:.92rem;transition:.25s}
+.xs-cat .i{width:16px;height:16px;color:var(--c)}
+.xs-cat:hover{transform:translateY(-2px);border-color:color-mix(in srgb,var(--c) 55%,transparent)}
+.xs-cat[aria-pressed=true]{background:color-mix(in srgb,var(--c) 16%,transparent);border-color:var(--c)}
+.xs-meta{font-size:.85rem;opacity:.65;margin:10px 4px 14px}
+.xs-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
+.xs-group{margin-top:26px}.xs-group:first-child{margin-top:8px}
+.xs-gh{display:flex;align-items:center;gap:14px;margin-bottom:14px;padding-bottom:12px;position:relative}
+.xs-gh::after{content:"";position:absolute;inset-inline:0;bottom:0;height:2px;border-radius:2px;background:linear-gradient(to left,var(--c),transparent 75%)}
+.xs-gi{width:44px;height:44px;border-radius:14px;display:grid;place-items:center;flex:none;color:var(--c);background:color-mix(in srgb,var(--c) 14%,transparent);border:1px solid color-mix(in srgb,var(--c) 40%,transparent)}
+.xs-gi .i{width:22px;height:22px}
+.xs-gh h2{font-size:1.3rem;margin:0;line-height:1.3}.xs-gh p{margin:2px 0 0;font-size:.85rem;opacity:.7}
+.xs-note{display:flex;align-items:center;gap:8px;margin-top:10px;font-size:.88rem;padding:10px 14px;border:1px dashed var(--gold-soft);border-radius:12px;background:color-mix(in srgb,var(--gold) 6%,transparent)}.xs-note .i{width:16px;height:16px;flex:none;color:var(--gold)}
+.xs-card{position:relative;overflow:hidden;display:flex;align-items:center;gap:16px;padding:16px 18px;padding-inline-start:15px;border:1px solid var(--line);border-inline-start:4px solid var(--c);border-radius:var(--r);background:var(--glass);box-shadow:var(--shadow);transition:border-color .2s,transform .25s,opacity .5s ease,translate .5s cubic-bezier(.2,.8,.2,1)}
+.xs-pre{opacity:0;translate:0 14px}
+@media print{.xs-pre{opacity:1;translate:none}}
+.xs-card::after{content:"";position:absolute;inset:0;pointer-events:none;background:radial-gradient(circle at 0 0,color-mix(in srgb,var(--c) 15%,transparent),transparent 55%)}
+.xs-card>*{position:relative;z-index:1}
+.xs-card:hover{border-color:color-mix(in srgb,var(--c) 55%,transparent);border-inline-start-color:var(--c);transform:translateY(-3px)}
+.xs-card .av{width:54px;height:54px;border-radius:50%;flex:none;display:grid;place-items:center;overflow:hidden;box-shadow:0 0 0 5px color-mix(in srgb,var(--c) 15%,transparent),0 10px 20px -10px var(--c)}
+.xs-card:hover .av{animation:wob .6s ease}
+.xs-card .av svg{width:74%;height:74%}
+.xs-tx{flex:1;min-width:0}
+.xs-nm{font-weight:800;font-size:1.02rem;line-height:1.4}
+.xs-tg{font-size:.86rem;opacity:.75;line-height:1.6;margin-top:2px}
+.xs-lb{display:inline-block;font-size:.72rem;font-weight:700;margin-bottom:5px;padding:1px 9px;border-radius:99px;color:var(--c);background:color-mix(in srgb,var(--c) 13%,transparent)}
+.xs-card .go{flex:none;color:var(--text);background:color-mix(in srgb,var(--c) 12%,transparent);border-color:color-mix(in srgb,var(--c) 40%,transparent)}
+@keyframes xsin{from{opacity:0;transform:translateY(10px)}}
+@media(max-width:820px){.xs-grid{grid-template-columns:1fr}.xs-head{border-radius:18px}.xs-tabs{width:100%}.xs-tab{flex:1;flex-direction:column;text-align:center;font-size:.75rem;gap:4px;justify-content:center;padding:8px 4px}.xs-br{padding-inline:6px}.xs-cats{flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none;padding-bottom:4px}.xs-cats::-webkit-scrollbar{display:none}.xs-cat{flex:none;white-space:nowrap}}
+@media(max-width:520px){.xs-card{flex-wrap:wrap}.xs-card .go{margin-inline-start:auto}}
+@media(prefers-reduced-motion:reduce){.xs-bc{animation:none}.xs-pre{opacity:1;translate:none}}
+@keyframes wob{25%{transform:rotate(-9deg) scale(1.08)}75%{transform:rotate(9deg) scale(1.08)}}
+.xs-group .xs-lb{display:none}
+
+/* the notice tip opens downward like on the other pages; reserve room under it so it never covers the footer */
+body[data-page=extensions] #extensions{padding-bottom:170px}
+@media(max-width:640px){body[data-page=extensions] #extensions{padding-bottom:260px}}
+@media(max-width:420px){body[data-page=extensions] #extensions{padding-bottom:340px}}

@@ -1,0 +1,117 @@
+/* ==========================================================================
+   components.css — reusable UI: cards, panels, rows, chips, buttons, notices,
+   sub-navigation, breadcrumb.  Loaded on every page.
+   ========================================================================== */
+
+/* ---- surfaces ---- */
+.card,.panel,.tile{background:var(--glass);border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--shadow);
+  backdrop-filter:blur(18px) saturate(140%);-webkit-backdrop-filter:blur(18px) saturate(140%)}
+
+/* ---- lead text, buttons ---- */
+.lead{color:var(--dim);font-size:clamp(1rem,1.6vw,1.15rem);max-width:46ch;margin:0 0 28px}
+.cta{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:30px}
+.btn{display:inline-flex;align-items:center;gap:10px;padding:14px 26px;border-radius:99px;font-weight:700;border:1px solid var(--line);transition:.2s}
+.btn.solid{background:linear-gradient(180deg,var(--gold-soft),var(--gold));color:var(--btn-ink);border-width:0;box-shadow:0 10px 30px -10px var(--gold)}
+:root[data-theme="light"] .btn.solid{background:linear-gradient(180deg,#D99A2B,#B8760E)}
+.btn.ghost{background:var(--glass)}
+.btn:hover{transform:translateY(-2px)}
+.btn.ghost:hover{border-color:var(--gold-soft);color:var(--gold-soft)}
+.cta.after{margin:26px 0 0;align-items:center}
+.hint{color:var(--dim);font-size:.92rem}
+
+/* ---- cards & chips ---- */
+/* cards */
+.grid{display:grid;gap:18px;grid-template-columns:repeat(3,1fr)}
+.grid.two{grid-template-columns:repeat(2,1fr)}
+.card{padding:28px 26px;transition:transform .22s,border-color .22s,background .22s}
+.card:hover{transform:translateY(-4px);background:var(--glass-hi);border-color:color-mix(in srgb,var(--c,var(--gold)) 50%,transparent)}
+.card .ico{margin-bottom:18px}
+.card h3{margin:0 0 8px;font-size:1.25rem}
+.card p{margin:0 0 14px;color:var(--dim);font-size:1rem}
+.pair{display:flex;gap:6px;margin-bottom:18px}
+.pair .ico{margin:0;width:44px;height:44px}
+.chip{display:inline-flex;align-items:center;gap:8px;padding:7px 14px;border-radius:99px;border:1px solid var(--line);color:var(--dim);font-size:.92rem;transition:.2s}
+.chip:hover{color:var(--c,var(--teal));border-color:var(--c,var(--teal));background:color-mix(in srgb,var(--c,var(--teal)) 10%,transparent)}
+.chip .i{width:1em;height:1em;transition:transform .2s}
+.chip:hover .i{transform:translate(-2px,-2px)}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+
+/* ---- split layout, panels, rows ---- */
+.split{display:grid;grid-template-columns:.9fr 1.1fr;gap:20px}
+.panel{padding:8px 26px}
+.track{display:grid;grid-template-columns:48px 1fr;gap:16px;padding:22px 0;border-bottom:1px solid var(--line)}
+.track:last-child,.row:last-child{border-bottom:none}
+.track h4{margin:0 0 4px;font-size:1.15rem}
+.track p{margin:0;color:var(--dim);font-size:.97rem}
+.row{display:flex;align-items:center;gap:14px;padding:16px 0;border-bottom:1px solid var(--line)}
+.row .av{width:42px;height:42px;border-radius:13px;display:grid;place-items:center;flex:none;font-weight:900;color:var(--c);
+  background:color-mix(in srgb,var(--c) 14%,transparent);border:1px solid color-mix(in srgb,var(--c) 35%,transparent)}
+.row .txt{flex:1;min-width:0}
+.row .name{font-weight:700;overflow-wrap:anywhere}
+.row .tag{color:var(--dim);font-size:.92rem}
+.row .av.lg{color:#fff;border:0;overflow:hidden;box-shadow:inset 0 0 0 1px rgba(128,128,128,.28)}
+.row .av.lg svg{width:64%;height:64%;flex:none}
+.row .av.lg img{width:100%;height:100%;object-fit:cover;display:block}
+.go{display:inline-flex;align-items:center;gap:6px;padding:8px 14px;border-radius:99px;border:1px solid var(--line);color:var(--gold-soft);font-size:.95rem;white-space:nowrap;transition:.2s}
+.go:hover{border-color:var(--gold-soft);background:color-mix(in srgb,var(--gold) 10%,transparent)}
+.go .i{width:1em;height:1em}
+
+/* ---- tags & copyable addresses (home DNS list + dns.html) ---- */
+.addr{font-family:'IBM Plex Mono',monospace;font-size:.9rem;direction:ltr;cursor:pointer;padding:7px 12px;border-radius:12px;border:1px solid var(--line);background:var(--glass-hi);color:var(--text);transition:.2s}
+.addr:hover{border-color:var(--gold-soft);color:var(--gold-soft)}
+.addr.done{border-color:var(--teal);color:var(--teal)}
+
+/* ---- notice: one short line, the details float open on hover / focus / tap ---- */
+.notice{position:relative;z-index:5;display:flex;gap:12px;align-items:center;width:fit-content;max-width:100%;margin-top:22px;padding:10px 20px;border-radius:99px;font-size:1rem;color:var(--dim);cursor:help;
+  border:1px solid color-mix(in srgb,var(--gold) 40%,transparent);background:color-mix(in srgb,var(--gold) 9%,transparent);transition:background .2s,border-color .2s}
+.notice b{color:var(--gold-soft)}
+.notice .i{color:var(--gold);width:22px;height:22px;flex:none}
+.notice .nt{min-width:0}
+.notice .nd{position:absolute;inset-inline-start:0;top:100%;width:min(560px,88vw);padding-top:10px;opacity:0;pointer-events:none;transform:translateY(-6px);transition:opacity .2s,transform .2s}
+.notice .nd>span{display:block;padding:16px 20px;border-radius:var(--r);line-height:1.8;color:var(--text);font-size:.98rem;
+  border:1px solid color-mix(in srgb,var(--gold) 45%,transparent);background:color-mix(in srgb,var(--gold) 12%,var(--bg2));box-shadow:var(--shadow)}
+.notice:hover,.notice:focus-within{z-index:40;background:color-mix(in srgb,var(--gold) 15%,transparent);border-color:var(--gold)}
+.notice:hover .nd,.notice:focus-within .nd{opacity:1;pointer-events:auto;transform:none}
+.notice:focus-visible{outline-offset:4px}
+@media(prefers-reduced-motion:reduce){.notice,.notice .nd{transition:none}}
+
+/* ---- sub headings ---- */
+.sub{margin:38px 0 16px;font-size:1.12rem}.sub small{display:block;color:var(--dim);font-weight:400;font-size:.92rem;margin-top:2px}
+.sub-note{margin:-8px 0 16px;color:var(--dim);font-size:.92rem;line-height:1.8;max-width:85ch} /* paragraph that follows a .sub heading (kept out of the <h3> so screen readers read only the title) */
+
+/* ---- responsive ---- */
+@media(min-width:760px){.cols{display:grid;grid-template-columns:1fr 1fr;column-gap:44px}.cols .row:nth-last-child(-n+2){border-bottom:none}}
+@media(max-width:980px){.grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:840px){.split{grid-template-columns:1fr}}
+@media(max-width:600px){
+  .grid,.grid.two{grid-template-columns:1fr}
+  .panel{padding:4px 18px}
+  .row{flex-wrap:wrap}.row .go{margin-inline-start:56px}.cta .btn{flex:1;justify-content:center}
+  .cta.after{flex-direction:column;align-items:stretch}.cta.after .btn{flex:none}.hint{text-align:center}
+}
+
+/* ==========================================================================
+   navigation helpers
+   ========================================================================== */
+
+/* ---- breadcrumb & page hero (inner pages) ---- */
+.pagehero{padding-top:clamp(28px,6vh,60px)}
+.pagehero .sec-head{margin-bottom:26px}
+.pagehero .sec-head p{max-width:60ch}
+.crumbs{display:flex;align-items:center;gap:8px;margin-bottom:18px;color:var(--dim);font-size:.95rem}
+.crumbs a{transition:color .2s}.crumbs a:hover{color:var(--gold-soft)}
+.crumbs b{color:var(--text);font-weight:500}
+
+/* ---- sticky sub-navigation (jumps between the sections of one page) ---- */
+.subnav{position:sticky;top:var(--hh);z-index:30;overflow-x:auto;scrollbar-width:none;background:var(--head);border-bottom:1px solid var(--line);
+  backdrop-filter:blur(18px) saturate(150%);-webkit-backdrop-filter:blur(18px) saturate(150%)}
+.subnav::-webkit-scrollbar{display:none}
+.subnav ul{display:flex;gap:6px;list-style:none;margin:0 auto;padding:10px 5vw;max-width:1180px;width:max-content;min-width:100%}
+.subnav a{display:inline-flex;align-items:center;gap:8px;white-space:nowrap;padding:7px 14px;border-radius:99px;border:1px solid transparent;color:var(--dim);font-size:.97rem;transition:.2s}
+.subnav a:hover{color:var(--text);background:var(--glass)}
+.subnav a.on{color:var(--text);background:var(--glass-hi);border-color:var(--line)}
+.subnav a b{font-size:.85rem;font-weight:700;color:var(--gold-soft);padding:0 7px;border-radius:99px;background:color-mix(in srgb,var(--gold) 14%,transparent)}
+.subnav + section{padding-top:clamp(24px,4vh,40px)}
+
+/* ---- previous / next page ---- */
+
