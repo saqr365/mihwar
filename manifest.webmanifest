@@ -1,5 +1,5 @@
 {
-  "name": "مِحوَر دليل الطالب الرقمي",
+  "name": "مِحوَر.  دليل الطالب الرقمي",
   "short_name": "مِحوَر",
   "description": "دليل رقمي لطلبة الجامعات: الأجهزة، ومنصات التعلم، والذكاء الاصطناعي، ومحررات وأدوات البرمجة.",
   "lang": "ar",
@@ -10,8 +10,23 @@
   "background_color": "#0B0F16",
   "theme_color": "#0B0F16",
   "icons": [
-    { "src": "assets/img/icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
-    { "src": "assets/img/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" },
-    { "src": "assets/img/icon-maskable-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+    {
+      "src": "assets/img/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "assets/img/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "assets/img/icon-maskable-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
   ]
 }
