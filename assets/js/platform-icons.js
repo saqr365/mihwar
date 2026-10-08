@@ -3,6 +3,11 @@
    Edit an entry here and BOTH pages update (icons are inline SVG in this file, there are no separate image files). */
 (function () {
   var ICONS = {
+ "codecademy": {
+  "bg": "#10162F",
+  "c": "#3A10E5",
+  "html": "<svg viewBox=\"0 0 24 24\" aria-hidden=\"true\" style=\"width:60%;height:60%\"><path fill=\"none\" stroke=\"#FFD300\" stroke-width=\"2.6\" stroke-linecap=\"round\" stroke-linejoin=\"round\" d=\"m8 6.5-5.5 5.5L8 17.5m8-11 5.5 5.5L16 17.5\"/></svg>"
+ },
  "w3schools": {
   "bg": "#04AA6D",
   "c": "#04AA6D",

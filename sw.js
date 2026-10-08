@@ -1,5 +1,5 @@
 /* sw.js — offline cache for Mihwar */
-var VER = 'mihwar-v6';
+var VER = 'mihwar-v7';
 var PRECACHE = [
   "./",
   "editors.html",
