@@ -145,13 +145,10 @@ footer::before{content:"";position:absolute;inset-inline:0;top:0;height:1px;
 .contact{display:flex;flex-wrap:wrap;gap:12px;margin-top:20px}
 .cbtn{display:inline-flex;align-items:center;justify-content:center;width:46px;height:46px;border-radius:50%;transition:.2s}
 .cbtn .i{width:1.35em;height:1.35em;flex:none}
-.cbtn.wa{background:color-mix(in srgb,#25D366 14%,transparent);color:#25D366}
-.cbtn.wa:hover{background:color-mix(in srgb,#25D366 24%,transparent);transform:translateY(-2px)}
 .cbtn.mail{background:color-mix(in srgb,var(--gold) 14%,transparent);color:var(--gold-soft)}
 .cbtn.mail:hover{background:color-mix(in srgb,var(--gold) 24%,transparent);transform:translateY(-2px)}
-.cbtn.li{background:color-mix(in srgb,#0A66C2 16%,transparent);color:#4C9BE8}
-.cbtn.li:hover{background:color-mix(in srgb,#0A66C2 26%,transparent);transform:translateY(-2px)}
-:root[data-theme="light"] .cbtn.li{color:#0A66C2}
+.cbtn.gh{background:color-mix(in srgb,var(--text) 10%,transparent);color:var(--text)}
+.cbtn.gh:hover{background:color-mix(in srgb,var(--text) 18%,transparent);transform:translateY(-2px)}
 .cbtn[data-tip]{position:relative}
 .cbtn[data-tip]::after,.cbtn[data-tip]::before{position:absolute;left:50%;opacity:0;pointer-events:none;
   transition:opacity .18s ease,transform .18s ease;z-index:30}
