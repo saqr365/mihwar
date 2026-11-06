@@ -45,7 +45,22 @@
     }
   }
   b.addEventListener('click', function () { set(!d.classList.contains('open')); });
-  d.addEventListener('click', function (e) { if (e.target.closest('a')) set(false); });
+  /* same behaviour as the footer links: pages open normally; a #section link on the page you are already on
+     closes the menu, restores the scroll position, then scrolls to the section */
+  d.addEventListener('click', function (e) {
+    var a = e.target.closest('a');
+    if (!a) return;
+    var strip = function (p) { return p.replace(/index\.html$/, ''); };
+    if (a.hash && strip(a.pathname) === strip(location.pathname)) {
+      e.preventDefault();
+      set(false);
+      var t = document.getElementById(decodeURIComponent(a.hash.slice(1)));
+      if (t) requestAnimationFrame(function () {
+        t.scrollIntoView();
+        try { history.pushState(null, '', a.hash); } catch (x) {}
+      });
+    } else set(false);
+  });
   document.addEventListener('keydown', function (e) { if (e.key === 'Escape') set(false); });
   matchMedia('(min-width:1101px)').addEventListener('change', function (e) { if (e.matches) set(false); });
 
