@@ -78,16 +78,3 @@
 if ('serviceWorker' in navigator && (location.protocol === 'https:' || location.hostname === 'localhost')) {
   addEventListener('load', function () { navigator.serviceWorker.register('sw.js').catch(function () {}); });
 }
-
-/* arriving on a #section from another page: jump straight there (no slow smooth scroll from the top), then restore smooth scrolling */
-if (document.documentElement.classList.contains('jump')) {
-  var jumpTo = function () {
-    var t = document.getElementById(decodeURIComponent(location.hash.slice(1)));
-    if (t) t.scrollIntoView();
-  };
-  jumpTo();                                   /* script runs at end of <body>: content is parsed */
-  addEventListener('load', function () {
-    jumpTo();                                 /* again after fonts/images settle the layout */
-    setTimeout(function () { document.documentElement.classList.remove('jump'); }, 1500);
-  });
-}
