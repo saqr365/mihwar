@@ -56,7 +56,7 @@
       set(false);
       var t = document.getElementById(decodeURIComponent(a.hash.slice(1)));
       if (t) requestAnimationFrame(function () {
-        t.scrollIntoView();
+        window.mihwarGo(t);
         try { history.pushState(null, '', a.hash); } catch (x) {}
       });
     } else set(false);
@@ -93,3 +93,34 @@
 if ('serviceWorker' in navigator && (location.protocol === 'https:' || location.hostname === 'localhost')) {
   addEventListener('load', function () { navigator.serviceWorker.register('sw.js').catch(function () {}); });
 }
+
+/* same-page #section links (footer, header, menu): scroll with our own code instead of relying on the browser's
+   native fragment handling, and verify it actually moved (installed apps on some phones ignore the native jump) */
+window.mihwarGo = function (t) {
+  var de = document.documentElement;
+  var pad = parseFloat(getComputedStyle(de).scrollPaddingTop) || 0;
+  var top = Math.max(0, Math.round(t.getBoundingClientRect().top + (window.pageYOffset || de.scrollTop || 0) - pad));
+  var y0 = window.pageYOffset || de.scrollTop || 0;
+  try { window.scrollTo({ top: top, behavior: 'smooth' }); } catch (e) { window.scrollTo(0, top); }
+  setTimeout(function () {
+    var y = window.pageYOffset || de.scrollTop || 0;
+    if (y === y0 && Math.abs(y0 - top) > 60) {  /* nothing moved at all: jump instantly, trying every scroller */
+      var prev = de.style.scrollBehavior; de.style.scrollBehavior = 'auto';
+      window.scrollTo(0, top); de.scrollTop = top; document.body.scrollTop = top;
+      de.style.scrollBehavior = prev;
+    }
+  }, 600);
+};
+document.addEventListener('click', function (e) {
+  if (e.defaultPrevented || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey || e.button) return;
+  var a = e.target.closest && e.target.closest('a[href*="#"]');
+  if (!a || !a.hash || a.target === '_blank' || a.host !== location.host) return;
+  if (!a.closest('footer, header, nav, .drawer')) return;
+  var strip = function (p) { return p.replace(/index\.html$/, ''); };
+  if (strip(a.pathname) !== strip(location.pathname)) return;
+  var t = document.getElementById(decodeURIComponent(a.hash.slice(1)));
+  if (!t) return;
+  e.preventDefault();
+  window.mihwarGo(t);
+  try { history.pushState(null, '', a.hash); } catch (x) {}
+});
